@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
 
-function Item(props) {
+function Item({marca, ano_lancamento}) {
     return (
         <>
             <li>
-                {props.marca} - {props.ano_lancamento}
+                {marca} - {ano_lancamento}
             </li>
         </>
     )

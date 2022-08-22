@@ -12,4 +12,3 @@ function List(){
 }
 
 export default List
-//<Item marca="Ferrari" ano_lancamento={2007}/> ao colocar isso dentro de ul não funciona seguindo a aula 08
