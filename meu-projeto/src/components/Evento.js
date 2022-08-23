@@ -1,15 +1,25 @@
-
+import Button from "./Button"
 
 function Evento() {
 
     function meuEvento() {
-        console.log("O evento foi disparado!")
+        console.log("Evento chamado pelo componente filho!")
+    }
+
+    function segundoEvento() {
+        console.log("Segundo evento chamado pelo componente filho")
+    }
+
+    function meuEvento2() {
+        console.log("Evento chamado pelo próprio componente")
     }
 
     return (
         <div>
             <p>Clique para disparar um evento:</p>
-            <button onClick={meuEvento}>Me clique</button>
+            <Button event={meuEvento} text="Primeiro Evento"/>
+            <Button event={segundoEvento} text="Segundo Evento"/>
+            <button onClick={meuEvento2}>Ativar</button>
         </div>
     )
 }

@@ -5,6 +5,7 @@ import Frase from './components/Fase';
 import List from './components/List';
 import Evento from './components/Evento';
 import Form from './components/Form';
+import Condicional from './components/Condicional';
 
 function App() {
 
@@ -23,6 +24,9 @@ function App() {
       <h1>Testando Eventos</h1>
       <Evento/>
       <Form/>
+      <p>--------------------------------------------------------------------------------------------</p>
+      <h1>Renderização Condicional</h1>
+      <Condicional/>
     </div>
   );
 }
