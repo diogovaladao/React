@@ -6,10 +6,12 @@ import List from './components/List';
 import Evento from './components/Evento';
 import Form from './components/Form';
 import Condicional from './components/Condicional';
+import OutraLista from './components/OutraLista';
 
 function App() {
 
   const nome = "Helena"
+  const meusItens = ['React', 'Vue', 'Angular']
 
   return (
     <div className="App">
@@ -27,6 +29,11 @@ function App() {
       <p>--------------------------------------------------------------------------------------------</p>
       <h1>Renderização Condicional</h1>
       <Condicional/>
+      <p>--------------------------------------------------------------------------------------------</p>
+      {/* aula 13*/}
+      <h1>Renderização Lista</h1>
+      <OutraLista itens={meusItens}/>
+      <OutraLista itens={[]}/>
     </div>
   );
 }
