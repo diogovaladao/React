@@ -10,6 +10,10 @@ import OutraLista from './components/OutraLista';
 import SeuNome from './components/SeuNome';
 import { useState } from 'react';
 import Saudacao from './components/Saudacao';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Home from './pages/Home';
+import Contato from './pages/Contato';
+import Empresa from './pages/Empresa';
 
 function App() {
 
@@ -43,8 +47,35 @@ function App() {
       <p>--------------------------------------------------------------------------------------------</p>
       {/*aula 14*/}
       <h1>State Lift #14</h1>
-      <SeuNome setName={setName /*componente que faz alteração */}/>
-      <Saudacao name={name /*componente que usa a alteração feita no anterior*/}/>
+      <SeuNome setName={setName /*componente que faz alteração */} />
+      <Saudacao name={name /*componente que usa a alteração feita no anterior*/} />
+      <p>--------------------------------------------------------------------------------------------</p>
+      {/*aula 15*/}
+      <h1>React Route #15</h1>
+      <Router>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/empresa">Empresa</Link>
+          </li>
+          <li>
+            <Link to="/contato">Contato</Link>
+          </li>
+        </ul>
+        <Switch>
+          <Route path='/'>
+            <Home />
+          </Route>
+          <Route path='/empresa'>
+            <Empresa />
+          </Route>
+          <Route path='/contato'>
+            <Contato />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
