@@ -1,7 +1,8 @@
 import { ThemeProvider } from "@mui/material";
 import { BrowserRouter } from "react-router-dom";
 import { AppRoutes } from "./routes/AppRoutes";
-import { LightTheme } from "./shared/themes"
+import { AppThemeProvider } from "./shared/contexts";
+import { DarkTheme, LightTheme } from './shared/themes'
 
 function App() {
   return (
@@ -14,3 +15,6 @@ function App() {
 }
 
 export default App;
+
+{/*<AppThemeProvider>
+    </AppThemeProvider>*/}
