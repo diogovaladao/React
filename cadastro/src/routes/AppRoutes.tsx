@@ -8,7 +8,7 @@ export const AppRoutes = () => {
   const { toggleTheme } = useAppThemeContext();
   return (
     <Routes>
-      <Route path="/pagina-inicial" element={<Button variant="contained" color="primary"   onClick={toggleTheme}>TOOGLE THEMe</Button>} />
+      <Route path="/pagina-inicial" element={<Button variant="contained" color="primary"   onClick={toggleTheme}>TOOGLE THEME</Button>} />
       <Route path="*" element={<Navigate to="/pagina-inicial" />} />
     </Routes>
   );
