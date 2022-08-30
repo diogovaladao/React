@@ -1,16 +1,20 @@
 import { ThemeProvider } from "@mui/material";
 import { BrowserRouter } from "react-router-dom";
 import { AppRoutes } from "./routes/AppRoutes";
+import { MenuLateral } from "./shared/components";
 import { AppThemeProvider } from "./shared/contexts";
-import { DarkTheme, LightTheme } from './shared/themes'
+import { LightTheme } from './shared/themes';
+
 
 function App() {
   return (
-    <ThemeProvider theme={LightTheme}>
+    <AppThemeProvider>
       <BrowserRouter>
+        
         <AppRoutes />
+        
       </BrowserRouter>
-    </ThemeProvider>
+    </AppThemeProvider>
   );
 }
 
@@ -18,3 +22,5 @@ export default App;
 
 {/*<AppThemeProvider>
     </AppThemeProvider>*/}
+
+    {/*<ThemeProvider theme=()>*/}

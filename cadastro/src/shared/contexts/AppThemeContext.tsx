@@ -14,9 +14,9 @@ export const useAppThemeContext = () => {
     return useContext(ThemeContext);
 }
 
-/* método usado na aula 5.1 pra corrigir erro da atualização da versão no children*/
+/* método usado na aula 5.1 pra corrigir erro da atualização da versão */
 interface IAppThemeProviderProps {
-    children: React.ReactNode
+    children?: React.ReactNode;
 }
 
 export const AppThemeProvider: React.FC<IAppThemeProviderProps> = ({ children }) => {
@@ -34,7 +34,7 @@ export const AppThemeProvider: React.FC<IAppThemeProviderProps> = ({ children })
 
     return (
         <ThemeContext.Provider value={{ themeName, toggleTheme }}>
-            <ThemeProvider theme={themeName}>
+            <ThemeProvider theme={theme}>
                 <Box width="100vw" height="100vh" bgcolor={theme.palette.background.default}>
                     {children}
                 </Box>
