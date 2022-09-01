@@ -1,12 +1,14 @@
 import { BrowserRouter } from "react-router-dom";
 import { AppRoutes } from "./routes/AppRoutes";
 import { MenuLateral } from "./shared/components";
-import { AppThemeProvider } from "./shared/contexts";
+import { AppThemeProvider, AppDrawerProvider } from "./shared/contexts";
+
 
 
 function App() {
   return (
     <AppThemeProvider>
+    <AppDrawerProvider>
       <BrowserRouter>
 
         <MenuLateral>
@@ -14,13 +16,9 @@ function App() {
         </MenuLateral>
 
       </BrowserRouter>
+      </AppDrawerProvider>
     </AppThemeProvider>
   );
 }
 
 export default App;
-
-{/*<AppThemeProvider>
-    </AppThemeProvider>*/}
-
-{/*<ThemeProvider theme=()>*/ }

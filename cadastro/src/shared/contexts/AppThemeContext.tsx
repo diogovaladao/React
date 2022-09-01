@@ -16,7 +16,7 @@ export const useAppThemeContext = () => {
 
 /* método usado na aula 5.1 pra corrigir erro da atualização da versão */
 interface IAppThemeProviderProps {
-    children?: React.ReactNode;
+    children: React.ReactNode;
 }
 
 export const AppThemeProvider: React.FC<IAppThemeProviderProps> = ({ children }) => {
