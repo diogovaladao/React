@@ -1,6 +1,36 @@
 import { Avatar, Divider, Drawer, useTheme, List, ListItemButton, ListItemText, ListItemIcon, Icon, useMediaQuery } from "@mui/material";
 import { Box } from "@mui/system";
+import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
 import { useDrawerContext } from "../../contexts";
+
+interface IListItemLinkPropa {
+    to: string;
+    icon: string;
+    label: string;
+    onClick: (() => void) | undefined;
+}
+
+const ListItemLink: React.FC<IListItemLinkPropa> = ({ to, icon, label, onClick }) => {
+
+    const navigate = useNavigate();
+    
+    const resolvePath = useResolvedPath(to);
+    const match = useMatch({ path: resolvePath.pathname, end: false });
+
+    const handleClick = () => {
+        navigate(to);
+        onClick?.(); /* o ?. é meio que um if para verificara se a função é ou não undefined #10*/
+    };
+
+    return (
+        <ListItemButton selected={!!match} onClick={handleClick}>
+            <ListItemIcon>
+                <Icon>{icon}</Icon>
+            </ListItemIcon>
+            <ListItemText primary={label} />
+        </ListItemButton>
+    );
+};
 
 interface IMenuLateralProps {
     children: React.ReactNode;
@@ -10,11 +40,11 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({ children }) => {
     const theme = useTheme();
     const smDown = useMediaQuery(theme.breakpoints.down('sm'));
 
-    const {isDrawerOpen, toggleDrawerOpen} = useDrawerContext();
+    const { isDrawerOpen, toggleDrawerOpen, drawerOptions } = useDrawerContext();
 
     return (
         <>
-            <Drawer open={isDrawerOpen} variant={ smDown ? "temporary" : 'permanent'} onClose={toggleDrawerOpen}>
+            <Drawer open={isDrawerOpen} variant={smDown ? "temporary" : 'permanent'} onClose={toggleDrawerOpen}>
                 <Box width={theme.spacing(28)} height="100%" display="flex" flexDirection="column">
 
                     <Box width="100%" height={theme.spacing(20)} display="flex" alignItems="center" justifyContent="center">
@@ -28,12 +58,15 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({ children }) => {
 
                     <Box flex={1}>
                         <List component="nav">
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    <Icon>home</Icon>
-                                </ListItemIcon>
-                                <ListItemText primary="Página Inicial" />
-                            </ListItemButton>
+                            {drawerOptions.map(drawerOptions => (
+                                < ListItemLink
+                                    to={drawerOptions.path}
+                                    key={drawerOptions.path}
+                                    icon={drawerOptions.icon}
+                                    label={drawerOptions.label}
+                                    onClick={smDown ? toggleDrawerOpen : undefined}
+                                />
+                            ))}
                         </List>
                     </Box>
 
