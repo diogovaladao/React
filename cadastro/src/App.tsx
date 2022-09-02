@@ -19,6 +19,6 @@ function App() {
       </AppDrawerProvider>
     </AppThemeProvider>
   );
-}
+};
 
 export default App;
