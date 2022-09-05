@@ -1,12 +1,58 @@
-import { Box, Button, Paper, TextField } from "@mui/material";
+import { Box, Button, Icon, Paper, TextField, useTheme } from "@mui/material";
 
-export const BarraDeFerramentas: React.FC = () => {
+interface IBarraDeFerramentasProps {
+    textoDeBusca?: string;
+    mostraInputBusca?: boolean;
+    aoMudarTextoDeBusca?: (novoTexto: string) => void;
+    textoBotaoNovo?: string;
+    mostrarBotaoNovo?: boolean;
+    aoCliarEmNovo?: () => void;
+}
+
+export const BarraDeFerramentas: React.FC<IBarraDeFerramentasProps> = ({
+    textoDeBusca = '',
+    mostraInputBusca = false,
+    aoMudarTextoDeBusca,
+    textoBotaoNovo = 'Novo',
+    mostrarBotaoNovo = true,
+    aoCliarEmNovo
+}) => {
+
+    const theme = useTheme();
 
     return (
-        <Box component={Paper}>
-            <TextField />
+        <Box
+            height={theme.spacing(5)}
+            marginX={1}
+            padding={1}
+            paddingX={2}
+            display="flex"
+            gap={1}
+            alignItems="center"
+            component={Paper}
+        >
 
-            <Button>Novo</Button>
+            {mostraInputBusca && (
+                <TextField /* tentar colocar ícone de pesquisa aqui */
+                    size="small"
+                    value={textoDeBusca}
+                    onChange={(e) => aoMudarTextoDeBusca?.(e.target.value)}
+                    placeholder="Pesquisar..."
+                />
+            )}
+
+
+            <Box flex={1} display="flex" justifyContent="end">
+                {mostrarBotaoNovo && (
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        disableElevation
+                        onClick={aoCliarEmNovo}
+                        endIcon={<Icon>add</Icon>}
+                    >{textoBotaoNovo}</Button>
+                )}
+            </Box>
         </Box>
     )
 }
