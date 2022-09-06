@@ -36,17 +36,58 @@ const getAll = async (page = 1, filter = ''): Promise<TPessoasComTotalCount | Er
 
     } catch (error) {
         console.error(error);
-        return new Error((error as {message: string}).message || 'Erro ao listar os registros.');
+        return new Error((error as { message: string }).message || 'Erro ao listar os registros.');
     }
 };
 
-const getById = async (): Promise<any> => { };
+const getById = async (id: number): Promise<IDetalhePessoa | Error> => {
+    try {
+        const urlRelativa = `/pessoas/${id}`;
+        const { data } = await Api.get(urlRelativa);
 
-const creat = async (): Promise<any> => { };
+        if (data) {
+            return data;
+        }
+        return new Error('Erro ao consultar os registros.')
 
-const updateById = async (): Promise<any> => { };
+    } catch (error) {
+        console.error(error);
+        return new Error((error as { message: string }).message || 'Erro ao consultar os registros.');
+    }
+};
 
-const delteById = async (): Promise<any> => { };
+const creat = async (dados: Omit<IDetalhePessoa, 'id'>): Promise<number | Error> => {
+    try {
+        const { data } = await Api.post<IDetalhePessoa>('/pessoas', dados);
+
+        if (data) {
+            return data.id;
+        }
+        return new Error('Erro ao criar o registro.')
+
+    } catch (error) {
+        console.error(error);
+        return new Error((error as { message: string }).message || 'Erro ao criar o registro.');
+    }
+};
+
+const updateById = async (id: number, daods: IDetalhePessoa): Promise<void | Error> => {
+    try {
+        await Api.put(`/pessoas/${id}`, daods);
+    } catch (error) {
+        console.error(error);
+        return new Error((error as { message: string }).message || 'Erro ao atualizar o registro.');
+    }
+};
+
+const delteById = async (id: number): Promise<void | Error> => {
+    try {
+        await Api.delete(`/pessoas/${id}`);
+    } catch (error) {
+        console.error(error);
+        return new Error((error as { message: string }).message || 'Erro ao apagar o registro.');
+    }
+};
 
 
 export const PessoasServices = {
