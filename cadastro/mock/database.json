@@ -5,6 +5,30 @@
             "email": "diogo.svaladao@gmail.com",
             "nomeCompleto": "Diogo Valadão",
             "cidadeId": 2
+        },
+        {
+            "id": 2,
+            "email": "hpoison@gmail.com",
+            "nomeCompleto": "Helena Mendes",
+            "cidadeId": 2
+        },
+        {
+            "id": 3,
+            "email": "ester.costa@nuseed.com",
+            "nomeCompleto": "Ester Mical",
+            "cidadeId": 2
+        },
+        {
+            "id": 4,
+            "email": "ariane.fale@gmail.com",
+            "nomeCompleto": "Ariane Ale",
+            "cidadeId": 2
+        },
+        {
+            "id": 5,
+            "email": "camilacustodia1@gmail.com",
+            "nomeCompleto": "Camila Custódia",
+            "cidadeId": 2
         }
     ]
 }
