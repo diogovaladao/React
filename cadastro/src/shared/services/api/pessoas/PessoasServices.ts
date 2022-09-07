@@ -1,4 +1,3 @@
-import { type } from "os";
 import { Environment } from "../../../environment";
 import { Api } from "../axios-config";
 
