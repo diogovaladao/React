@@ -29,6 +29,66 @@
             "email": "camilacustodia1@gmail.com",
             "nomeCompleto": "Camila Custódia",
             "cidadeId": 2
+        },
+        {
+            "id": 6,
+            "email": "price@gmail.com",
+            "nomeCompleto": "Capitão Price",
+            "cidadeId": 2
+        },
+        {
+            "id": 7,
+            "email": "denegs@gmail.com",
+            "nomeCompleto": "Daniel Negreanu",
+            "cidadeId": 2
+        },
+        {
+            "id": 8,
+            "email": "silverhand@nuseed.com",
+            "nomeCompleto": "Johny Silverhand",
+            "cidadeId": 2
+        },
+        {
+            "id": 9,
+            "email": "roug@gmail.com",
+            "nomeCompleto": "Roug",
+            "cidadeId": 2
+        },
+        {
+            "id": 10,
+            "email": "arya@gmail.com",
+            "nomeCompleto": "Arya Stark",
+            "cidadeId": 2
+        },
+        {
+            "id": 11,
+            "email": "sansa@gmail.com",
+            "nomeCompleto": "Sansa Stark",
+            "cidadeId": 2
+        },
+        {
+            "id": 12,
+            "email": "shiryu@nuseed.com",
+            "nomeCompleto": "Shiryu",
+            "cidadeId": 2
+        },
+        {
+            "id": 13,
+            "email": "geralt@gmail.com",
+            "nomeCompleto": "Geralt de Rivia",
+            "cidadeId": 2
+        },
+        {
+            "id": 14,
+            "email": "arthru1@gmail.com",
+            "nomeCompleto": "Arthur Morgan",
+            "cidadeId": 2
+        },
+        {
+            "id": 15,
+            "email": "trinity@gmail.com",
+            "nomeCompleto": "Trinity",
+            "cidadeId": 2
         }
     ]
 }
