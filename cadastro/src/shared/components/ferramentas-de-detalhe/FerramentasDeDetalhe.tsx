@@ -7,7 +7,7 @@ interface IFerramentasDeDetalhePrpos {
     mostrarBotaoVoltar?: boolean;
     mostrarBotaoApagar?: boolean;
     mostrarBotaoSalvar?: boolean;
-    mostrarSavlarEFechar?: boolean;
+    mostrarBotaoSavlarEFechar?: boolean;
 
     mostrarBotaoNovoCarregando?: boolean;
     mostrarBotaoVoltarCarregando?: boolean;
@@ -29,7 +29,7 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalhePrpos> = ({
     mostrarBotaoVoltar = true,
     mostrarBotaoApagar = true,
     mostrarBotaoSalvar = true,
-    mostrarSavlarEFechar = false,
+    mostrarBotaoSavlarEFechar: mostrarSavlarEFechar = false,
 
     mostrarBotaoNovoCarregando = false,
     mostrarBotaoVoltarCarregando = false,
