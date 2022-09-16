@@ -1,9 +1,19 @@
-import { LinearProgress } from "@mui/material";
-import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Form } from "@unform/web";
+import { FormHandles } from "@unform/core";
+
+import { PessoasServices } from "../../shared/services/api/pessoas/PessoasServices";
 import { FerramentasDeDetalhe } from "../../shared/components";
 import { LayoutBaseDePagina } from "../../shared/layouts";
-import { PessoasServices } from "../../shared/services/api/pessoas/PessoasServices";
+import { VTextField } from "../../shared/forms";
+
+
+interface IFomrData {
+    email: string;
+    cidadeId: string;
+    nomeCompleto: string;
+}
 
 export const DetalheDePessoas: React.FC = () => {
     /* o useParams abaixo pega a parte final da url para decidir se é alteração ou criação */
@@ -11,6 +21,7 @@ export const DetalheDePessoas: React.FC = () => {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [nome, setNome] = useState('');
+    const formRef = useRef<FormHandles>(null);
 
     useEffect(() => {
         if (id !== 'nova') {
@@ -30,8 +41,8 @@ export const DetalheDePessoas: React.FC = () => {
         }
     }, [id]);
 
-    const handleSave = () => {
-        console.log("Save");
+    const handleSave = (dados: IFomrData) => {
+        console.log(dados);
     }
 
     const handleDelete = (id: number) => {
@@ -57,20 +68,21 @@ export const DetalheDePessoas: React.FC = () => {
                     mostrarBotaoNovo={id !== 'nova'}
                     mostrarBotaoApagar={id !== 'nova'}
 
-                    aoClicarEmSalvarEFechar={() => { handleSave }}
-                    aoClicarEmSalvar={() => { handleSave }}
-                    aoClicarEmApagar={() => {handleDelete(Number(id)) }}
                     aoClicarEmVoltar={() => navigate('/pessoas')}
+                    aoClicarEmApagar={() => { handleDelete(Number(id)) }}
                     aoClicarEmNovo={() => navigate('/pessoas/detalhe/nova')}
+                    aoClicarEmSalvar={() => { formRef.current?.submitForm() }}
+                    aoClicarEmSalvarEFechar={() => { formRef.current?.submitForm() }}
                 />
             }
         >
 
-            {isLoading && (
-                <LinearProgress variant="indeterminate" />
-            )}
+            <Form ref={formRef} onSubmit={handleSave} >
+                <VTextField name="email" />
+                <VTextField name="cidadeId" />
+                <VTextField name="nomeCompleto" />
+            </Form>
 
-            <p>Detalhe de pessoas {id}</p>
         </LayoutBaseDePagina>
     );
 }
