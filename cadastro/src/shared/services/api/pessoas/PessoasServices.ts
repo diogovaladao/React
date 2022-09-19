@@ -3,8 +3,8 @@ import { Api } from "../axios-config";
 
 export interface IListagemPessoa {
     id: number;
-    email: string;
     nomeCompleto: string;
+    email: string;
     cidadeId: number;
 };
 
