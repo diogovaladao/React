@@ -7,12 +7,6 @@
       "cidadeId": 2
     },
     {
-      "id": 2,
-      "nomeCompleto": "Helena Mendes",
-      "email": "hpoison@gmail.com",
-      "cidadeId": "32"
-    },
-    {
       "id": 3,
       "nomeCompleto": "Ester Mical",
       "email": "ester.costa@nuseed.com",
@@ -62,8 +56,8 @@
     },
     {
       "id": 14,
+      "nomeCompleto": "John Marston",
       "email": "arthru1@gmail.com",
-      "nomeCompleto": "Arthur Morgan",
       "cidadeId": 2
     },
     {
@@ -77,6 +71,18 @@
       "email": "yennefer@email.com",
       "cidadeId": "32",
       "id": 17
+    },
+    {
+      "nomeCompleto": "André Akkari",
+      "email": "akkari@email.com",
+      "cidadeId": "6",
+      "id": 18
+    },
+    {
+      "id": 19,
+      "nomeCompleto": "Dino da Silva Sauro",
+      "email": "dino@gmail.com",
+      "cidadeId": "5"
     }
   ]
 }

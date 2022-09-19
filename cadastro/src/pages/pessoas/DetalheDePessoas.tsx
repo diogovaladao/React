@@ -1,13 +1,11 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
-import { FormHandles } from "@unform/core";
+import { useEffect, useState } from "react";
 import { Box, Grid, LinearProgress, Paper, Typography } from "@mui/material";
-import { Form } from "@unform/web";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { PessoasServices } from "../../shared/services/api/pessoas/PessoasServices";
+import { VTextField, VForm, useVForm } from "../../shared/forms";
 import { FerramentasDeDetalhe } from "../../shared/components";
 import { LayoutBaseDePagina } from "../../shared/layouts";
-import { VTextField } from "../../shared/forms";
 
 
 interface IFomrData {
@@ -22,7 +20,7 @@ export const DetalheDePessoas: React.FC = () => {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [nome, setNome] = useState('');
-    const formRef = useRef<FormHandles>(null);
+    const { formRef, save, saveAndClose, isSaveAndClose } = useVForm();
 
     useEffect(() => {
         if (id !== 'nova') {
@@ -39,6 +37,12 @@ export const DetalheDePessoas: React.FC = () => {
                         formRef.current?.setData(result)
                     }
                 });
+        } else {
+            formRef.current?.setData({
+                nomeCompleto: '',
+                cidadeId: '',
+                email: '',
+            });
         }
     }, [id]);
 
@@ -51,7 +55,11 @@ export const DetalheDePessoas: React.FC = () => {
                     if (result instanceof Error) {
                         alert(result.message);
                     } else {
-                        navigate(`/pessoas/detalhe/${result}`);
+                        if (isSaveAndClose()) {
+                            navigate('/pessoas');
+                        } else {
+                            navigate(`/pessoas/detalhe/${result}`);
+                        }
                     }
                 });
         } else {
@@ -60,6 +68,10 @@ export const DetalheDePessoas: React.FC = () => {
                     setIsLoading(false);
                     if (result instanceof Error) {
                         alert(result.message);
+                    } else {
+                        if (isSaveAndClose()) {
+                            navigate('/pessoas');
+                        }
                     }
                 });
         }
@@ -88,20 +100,20 @@ export const DetalheDePessoas: React.FC = () => {
                     mostrarBotaoNovo={id !== 'nova'}
                     mostrarBotaoApagar={id !== 'nova'}
 
+                    aoClicarEmSalvar={save}
+                    aoClicarEmSalvarEFechar={saveAndClose}
                     aoClicarEmVoltar={() => navigate('/pessoas')}
                     aoClicarEmApagar={() => { handleDelete(Number(id)) }}
                     aoClicarEmNovo={() => navigate('/pessoas/detalhe/nova')}
-                    aoClicarEmSalvar={() => { formRef.current?.submitForm() }}
-                    aoClicarEmSalvarEFechar={() => { formRef.current?.submitForm() }}
                 />
             }
         >
 
-            <Form ref={formRef} onSubmit={handleSave} >
+            <VForm ref={formRef} onSubmit={handleSave} >
                 <Box margin={1} display="flex" flexDirection="column" component={Paper} variant="outlined">
 
                     <Grid container direction="column" padding={2} spacing={2}>
-                        {isLoading &&(
+                        {isLoading && (
                             <Grid item>
                                 <LinearProgress variant="indeterminate" />
                             </Grid>
@@ -114,11 +126,11 @@ export const DetalheDePessoas: React.FC = () => {
                         <Grid container item direction="row">
                             <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
                                 <VTextField
-                                fullWidth
-                                label="Nome completo"
-                                name="nomeCompleto"
-                                disabled={isLoading}
-                                onChange={e => setNome(e.target.value)}
+                                    fullWidth
+                                    label="Nome completo"
+                                    name="nomeCompleto"
+                                    disabled={isLoading}
+                                    onChange={e => setNome(e.target.value)}
                                 />
                             </Grid>
                         </Grid>
@@ -126,10 +138,10 @@ export const DetalheDePessoas: React.FC = () => {
                         <Grid container item direction="row">
                             <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
                                 <VTextField
-                                fullWidth
-                                label="Email"
-                                name="email"
-                                disabled={isLoading}
+                                    fullWidth
+                                    label="Email"
+                                    name="email"
+                                    disabled={isLoading}
                                 />
                             </Grid>
                         </Grid>
@@ -137,10 +149,10 @@ export const DetalheDePessoas: React.FC = () => {
                         <Grid container item direction="row">
                             <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
                                 <VTextField
-                                fullWidth
-                                label="Cidade"
-                                name="cidadeId"
-                                disabled={isLoading}
+                                    fullWidth
+                                    label="Cidade"
+                                    name="cidadeId"
+                                    disabled={isLoading}
                                 />
                             </Grid>
                         </Grid>
@@ -148,7 +160,7 @@ export const DetalheDePessoas: React.FC = () => {
                     </Grid>
 
                 </Box>
-            </Form>
+            </VForm>
         </LayoutBaseDePagina>
     );
 }
