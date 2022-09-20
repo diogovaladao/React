@@ -84,5 +84,23 @@
       "email": "dino@gmail.com",
       "cidadeId": "5"
     }
+  ],
+  "cidades": [
+    {
+      "nome": "Night City",
+      "id": 1
+    },
+    {
+      "nome": "Acreúna",
+      "id": 2
+    },
+    {
+      "nome": "Setubal",
+      "id": 3
+    },
+    {
+      "nome": "Novigrad",
+      "id": 4
+    }
   ]
 }
