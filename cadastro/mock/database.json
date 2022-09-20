@@ -7,22 +7,16 @@
       "cidadeId": 2
     },
     {
-      "id": 2,
-      "email": "hpoison@gmail.com",
-      "nomeCompleto": "Helena Mendes",
-      "cidadeId": 2
-    },
-    {
       "id": 3,
-      "email": "ester.costa@nuseed.com",
       "nomeCompleto": "Ester Mical",
+      "email": "ester.costa@nuseed.com",
       "cidadeId": 2
     },
     {
       "id": 4,
-      "email": "ariane.fale@gmail.com",
       "nomeCompleto": "Ariane Ale",
-      "cidadeId": 2
+      "email": "ariane.fale@gmail.com",
+      "cidadeId": 3
     },
     {
       "id": 5,
@@ -32,51 +26,111 @@
     },
     {
       "id": 6,
-      "email": "price@gmail.com",
-      "nomeCompleto": "Capitão Price",
-      "cidadeId": 2
+      "nomeCompleto": "Rhaenyra Targaryen",
+      "email": "rhaenyra@gmail.com",
+      "cidadeId": 9
     },
     {
       "id": 7,
-      "email": "denegs@gmail.com",
       "nomeCompleto": "Daniel Negreanu",
-      "cidadeId": 2
+      "email": "denegs@gmail.com",
+      "cidadeId": 6
     },
     {
       "id": 8,
-      "email": "silverhand@nuseed.com",
       "nomeCompleto": "Johny Silverhand",
-      "cidadeId": 2
+      "email": "silverhand@nuseed.com",
+      "cidadeId": 1
     },
     {
       "id": 10,
-      "email": "arya@gmail.com",
       "nomeCompleto": "Arya Stark",
-      "cidadeId": 2
+      "email": "arya@gmail.com",
+      "cidadeId": 7
     },
     {
       "id": 13,
-      "email": "geralt@gmail.com",
       "nomeCompleto": "Geralt de Rivia",
-      "cidadeId": 2
+      "email": "geralt@gmail.com",
+      "cidadeId": 4
     },
     {
       "id": 14,
+      "nomeCompleto": "John Marston",
       "email": "arthru1@gmail.com",
-      "nomeCompleto": "Arthur Morgan",
-      "cidadeId": 2
+      "cidadeId": 5
     },
     {
       "id": 15,
-      "nomeCompleto": "Trinity do matrix",
+      "nomeCompleto": "Trinity",
       "email": "trinity@gmail.com",
       "cidadeId": 2
     },
     {
+      "id": 17,
       "nomeCompleto": "Yennefer de Vengerberg",
       "email": "yennefer@email.com",
-      "cidadeId": "32",
-      "id": 17
+      "cidadeId": 5
+    },
+    {
+      "id": 18,
+      "nomeCompleto": "André Akkari",
+      "email": "akkari@email.com",
+      "cidadeId": 8
+    },
+    {
+      "id": 19,
+      "nomeCompleto": "Dino da Silva Sauro",
+      "email": "dino@gmail.com",
+      "cidadeId": "5"
+    },
+    {
+      "id": 20,
+      "nomeCompleto": "Farah Ahmed Karim",
+      "email": "farah@allegiance.com",
+      "cidadeId": 10
+    }
+  ],
+  "cidades": [
+    {
+      "nome": "Night City",
+      "id": 1
+    },
+    {
+      "nome": "Acreúna",
+      "id": 2
+    },
+    {
+      "nome": "Setubal",
+      "id": 3
+    },
+    {
+      "nome": "Novigrad",
+      "id": 4
+    },
+    {
+      "nome": "Saint Denis",
+      "id": 5
+    },
+    {
+      "nome": "Montreal",
+      "id": 6
+    },
+    {
+      "nome": "Winterfell",
+      "id": 7
+    },
+    {
+      "nome": "Orlando",
+      "id": 8
+    },
+    {
+      "nome": "Porto Real",
+      "id": 9
+    },
+    {
+      "nome": "Verdansk",
+      "id": 10
     }
   ]
 }
