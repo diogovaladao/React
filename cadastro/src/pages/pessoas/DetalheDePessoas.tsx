@@ -5,6 +5,7 @@ import * as yup from 'yup';
 
 import { PessoasServices } from "../../shared/services/api/pessoas/PessoasServices";
 import { VTextField, VForm, useVForm, IVFormErros } from "../../shared/forms";
+import { AutoCompliteCidade } from "./components/AutoCompliteCidade";
 import { FerramentasDeDetalhe } from "../../shared/components";
 import { LayoutBaseDePagina } from "../../shared/layouts";
 
@@ -24,16 +25,15 @@ const formValidationSchema: yup.SchemaOf<IFomrData> = yup.object().shape({
 
 export const DetalheDePessoas: React.FC = () => {
     /* o useParams abaixo pega a parte final da url para decidir se é alteração ou criação */
-    const { id = 'nova' } = useParams<'id'>();
-    const navigate = useNavigate();
-    const [isLoading, setIsLoading] = useState(false);
-    const [nome, setNome] = useState('');
     const { formRef, save, saveAndClose, isSaveAndClose } = useVForm();
+    const [isLoading, setIsLoading] = useState(false);
+    const { id = 'nova' } = useParams<'id'>();
+    const [nome, setNome] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
-        if (id !== 'nova') {
+        if (id !== 'nova') {           
             setIsLoading(true);
-
             PessoasServices.getById(Number(id))
                 .then((result) => {
                     setIsLoading(false);
@@ -43,20 +43,25 @@ export const DetalheDePessoas: React.FC = () => {
                     } else {
                         setNome(result.nomeCompleto)
                         formRef.current?.setData(result)
+                        console.log(result.cidadeId+ " id da cidade veio de Autocomplete")
                     }
                 });
         } else {
             formRef.current?.setData({
-                nomeCompleto: '',
-                cidadeId: '',
                 email: '',
+                nomeCompleto: '',
+                cidadeId: undefined,
             });
         }
+        
     }, [id]);
 
     const handleSave = (dados: IFomrData) => {
+
+        console.log(dados.cidadeId + " id da cidade deveria vir de Autocomplete");
+
         formValidationSchema.validate(dados, { abortEarly: false })
-            .then((dadosVlidados) => {
+            .then((dadosVlidados) => {                
                 setIsLoading(true);
                 if (id === 'nova') {
                     PessoasServices.creat(dadosVlidados)
@@ -93,6 +98,7 @@ export const DetalheDePessoas: React.FC = () => {
 
                     validationErrors[error.path] = error.message;
                 });
+                console.log(validationErrors + " erro que deu")            
                 formRef.current?.setErrors(validationErrors);
             });
     }
@@ -168,12 +174,13 @@ export const DetalheDePessoas: React.FC = () => {
 
                         <Grid container item direction="row">
                             <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
-                                <VTextField
+                                <AutoCompliteCidade isExternalLoading={isLoading}/>
+                                {/*<VTextField
                                     fullWidth
-                                    label="Cidade"
+                                    label="Cidades"
                                     name="cidadeId"
                                     disabled={isLoading}
-                                />
+                                />*/}
                             </Grid>
                         </Grid>
 
