@@ -89,12 +89,6 @@
       "nomeCompleto": "Farah Ahmed Karim",
       "email": "farah@allegiance.com",
       "cidadeId": 10
-    },
-    {
-      "nomeCompleto": "teste",
-      "email": "teste@gmail.com",
-      "cidadeId": 3,
-      "id": 21
     }
   ],
   "cidades": [
@@ -138,5 +132,8 @@
       "nome": "Verdansk",
       "id": 10
     }
-  ]
+  ],
+  "auth": {
+    "accessToken": "asdfa65s1fsadfas.fasf@65786afd&8%4"
+  }
 }
