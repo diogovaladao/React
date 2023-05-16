@@ -1,4 +1,4 @@
-import { createContext, useCallback, useEffect, useMemo, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { authService } from "../services/api/auth/AuthService";
 
 
@@ -54,4 +54,6 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
             {children}
         </AuthContext.Provider>
     );
-}
+};
+
+export const useAuthContext = () => useContext(AuthContext);
